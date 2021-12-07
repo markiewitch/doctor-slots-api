@@ -1,0 +1,123 @@
+openapi: 3.0.3
+info:
+  title: Doctor Slots
+  description: Doctor Slots
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3160'
+tags:
+  - name: Appointment Slots
+
+paths:
+  /slots:
+    get:
+      tags:
+        - Appointment Slots
+      parameters:
+        - name: date_from
+          in: query
+          description: Filters slots to only start after this time
+          schema:
+            type: string
+            format: date-time
+        - name: date_to
+          in: query
+          description: Filters slots to only start before this time
+          schema:
+            type: string
+            format: date-time
+        - name: sort_type
+          in: query
+          description: >
+            Sorting mechanism to use. There are two available now:
+              * `duration_asc` sorts from longest to shortest duration available
+              * `date_asc` sorts from closest available to latest available appointment date
+          schema:
+            default: date_asc
+            type: string
+            enum:
+              - duration_desc
+              - date_asc
+        - name: limit
+          in: query
+          description: Limits the amount of items returned per page
+          schema:
+            type: number
+            default: 10
+            minimum: 1
+            maximum: 50
+        - name: cursor
+          in: query
+          description: Cursor taken from a previous API response, allows to fetch subsequent data
+          schema:
+            type: string
+            example: c2xvdDpGV0kyNk0zVgo=
+      responses:
+        200:
+          description: List of available appointment slots
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SlotsResponse"
+        401:
+          description: "Returned when you are not authorized"
+          content:
+            application/vnd.error+json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    SlotsResponse:
+      type: object
+      properties:
+        next_cursor:
+          description: Points to the next set of results, to be used with `cursor` query parameter
+          required: true
+          type: string
+          example: c2xvdDpGV0kyNk0zVgo=
+        slots:
+          required: true
+          type: array
+          minItems: 0
+          maxItems: 50
+          items:
+            $ref: "#/components/schemas/Slot"
+
+    Slot:
+      type: object
+      properties:
+        id:
+          required: true
+          type: string
+          example: SFV506GS7
+        duration:
+          required: true
+          type: number
+          description: Slot duration in minutes
+          example: 15
+        starts_at:
+          required: true
+          type: string
+          format: date-time
+        doctor:
+          type: object
+          properties:
+            name:
+              required: true
+              type: string
+              example: Eloquent Brown
+            id:
+              required: true
+              type: string
+              example: D1KM32R7V
+
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          required: true
+          type: string
+          example: You're not authorized to access this resource
