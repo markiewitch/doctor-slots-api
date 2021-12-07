@@ -173,9 +173,6 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
-    "psr/link": {
-        "version": "1.0.0"
-    },
     "psr/log": {
         "version": "1.1.3"
     },
@@ -268,9 +265,6 @@
         "files": [
             "config/packages/dev/debug.yaml"
         ]
-    },
-    "symfony/debug-pack": {
-        "version": "v1.0.8"
     },
     "symfony/dependency-injection": {
         "version": "v5.1.7"
@@ -412,9 +406,6 @@
     "symfony/options-resolver": {
         "version": "v5.1.7"
     },
-    "symfony/orm-pack": {
-        "version": "v2.0.0"
-    },
     "symfony/password-hasher": {
         "version": "v5.3.4"
     },
@@ -448,20 +439,11 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.18.1"
     },
-    "symfony/polyfill-php73": {
-        "version": "v1.18.1"
-    },
-    "symfony/polyfill-php80": {
-        "version": "v1.18.1"
-    },
     "symfony/polyfill-php81": {
         "version": "v1.23.0"
     },
     "symfony/process": {
         "version": "v5.1.7"
-    },
-    "symfony/profiler-pack": {
-        "version": "v1.0.5"
     },
     "symfony/property-access": {
         "version": "v5.1.7"
@@ -513,9 +495,6 @@
     "symfony/serializer": {
         "version": "v5.1.7"
     },
-    "symfony/serializer-pack": {
-        "version": "v1.0.4"
-    },
     "symfony/service-contracts": {
         "version": "v2.2.0"
     },
@@ -524,9 +503,6 @@
     },
     "symfony/string": {
         "version": "v5.1.7"
-    },
-    "symfony/test-pack": {
-        "version": "v1.0.7"
     },
     "symfony/translation": {
         "version": "3.3",
@@ -561,9 +537,6 @@
             "templates/base.html.twig"
         ]
     },
-    "symfony/twig-pack": {
-        "version": "v1.0.2"
-    },
     "symfony/validator": {
         "version": "4.3",
         "recipe": {
@@ -581,9 +554,6 @@
         "version": "v5.1.7"
     },
     "symfony/var-exporter": {
-        "version": "v5.1.7"
-    },
-    "symfony/web-link": {
         "version": "v5.1.7"
     },
     "symfony/web-profiler-bundle": {
@@ -605,9 +575,6 @@
     },
     "theseer/tokenizer": {
         "version": "1.2.0"
-    },
-    "twig/extra-bundle": {
-        "version": "v3.0.5"
     },
     "twig/twig": {
         "version": "v3.0.5"
