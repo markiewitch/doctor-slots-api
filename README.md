@@ -44,9 +44,7 @@ are 64 bits shorter than UUIDs while still allowing us long enough data storage 
 247 120 867 unique values per second assuming a 20-year-long retention.
 
 If we require more space, I would consider sharding the data (ie. per continent/country/specialization) instead of
-putting everything into one place. An additional benefit is readability and for additional error-proofness I will
-prepend all identifiers with resource type, ie. doctor IDs will follow the pattern of D******* where the asterisks are
-base-36 encoded integers from database.
+putting everything into one place.
 
 URLs like `/slots/SFV506GS7` are a lot nicer than `/slots/1fcde0e9-13ee-4c0e-9c58-3ed90107d108`.
 
