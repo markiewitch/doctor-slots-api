@@ -5,6 +5,7 @@ namespace App\Adapters\SlotSupplier;
 
 use App\Domain\Ports\SlotSupplierApi;
 use App\Exception\SlotSupplierException;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -22,7 +23,7 @@ class HttpSlotSupplierApi implements SlotSupplierApi
             foreach ($doctors as $doctor) {
                 yield new ExternalDoctor($doctor['id'], $doctor['name']);
             }
-        } catch (TransportExceptionInterface $e) {
+        } catch (TransportExceptionInterface|ClientExceptionInterface $e) {
             throw new SlotSupplierException($e->getMessage(), $e->getCode(), $e);
         }
     }
@@ -37,7 +38,7 @@ class HttpSlotSupplierApi implements SlotSupplierApi
             foreach ($slots->toArray() as $slot) {
                 yield new ExternalSlot(new \DateTimeImmutable($slot['start']), new \DateTimeImmutable($slot['end']));
             }
-        } catch (TransportExceptionInterface $e) {
+        } catch (TransportExceptionInterface|ClientExceptionInterface $e) {
             throw new SlotSupplierException($e->getMessage(), $e->getCode(), $e);
         }
     }
