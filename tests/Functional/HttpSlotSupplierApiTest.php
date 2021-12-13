@@ -25,7 +25,7 @@ class HttpSlotSupplierApiTest extends KernelTestCase
     {
         $this->expectException(SlotSupplierException::class);
         $doctors = $this->supplierApi->getDoctors();
-        var_dump(iterator_to_array($doctors));
+        var_dump(iterator_to_array($doctors)); // todo interesting, as if PHP was not calling toArray until an item is processed in foreach
     }
 
     public function testDoctorDeserialization()
