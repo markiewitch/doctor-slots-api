@@ -41,4 +41,19 @@ class Slot
     {
         return $this->id;
     }
+
+    public function getDuration(): int
+    {
+        return $this->duration;
+    }
+
+    public function getStartDate(): \DateTimeImmutable
+    {
+        return $this->dateFrom;
+    }
+
+    public function getDoctor(): Doctor
+    {
+        return $this->doctor;
+    }
 }

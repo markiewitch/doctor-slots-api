@@ -27,4 +27,14 @@ class Doctor
         $this->name = $name;
         $this->externalId = $externalId;
     }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getId(): Ulid
+    {
+        return $this->id;
+    }
 }

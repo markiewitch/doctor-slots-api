@@ -18,6 +18,12 @@ class HttpRequestDeserializer implements ArgumentValueResolverInterface
 
     public function resolve(Request $request, ArgumentMetadata $argument)
     {
-        yield new ListSlotsRequest($request->query->get('sort_type', 'date_asc'), null, null);
+        yield new ListSlotsRequest(
+            sortType: $request->query->get('sort_type', 'date_asc'),
+            dateFrom: null,
+            dateTo: null,
+            limit: $request->query->getInt('limit', 15),
+            cursor: $request->query->get('cursor'),
+        );
     }
 }
