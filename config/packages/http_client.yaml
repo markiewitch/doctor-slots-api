@@ -1,0 +1,11 @@
+framework:
+  http_client:
+    scoped_clients:
+      slots.client:
+        base_uri: "%slots_provider_api_url%"
+        headers:
+          Authorization: Basic ZG9jcGxhbm5lcjpkb2NwbGFubmVy
+        timeout: 10
+
+parameters:
+  slots_provider_api_url: https://cryptic-cove-05648.herokuapp.com

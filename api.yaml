@@ -30,7 +30,7 @@ paths:
           in: query
           description: >
             Sorting mechanism to use. There are two available now:
-              * `duration_asc` sorts from longest to shortest duration available
+              * `duration_desc` sorts from longest to shortest duration available
               * `date_asc` sorts from closest available to latest available appointment date
           schema:
             default: date_asc

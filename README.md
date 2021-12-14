@@ -7,6 +7,7 @@ This repository is based on PHP 8 and Symfony 5
 The project is dockerized and configured to work with docker-compose
 
 - to run the container, use `docker-compose up -d`
+- run database migrations - `docker-compose run --rm recruitment-app bin/console doctrine:migrations:migrate`
 - after a while, the app should be accessible on `http://localhost:3160`
 
 ## Diary
@@ -36,17 +37,6 @@ specification:
 
 * https://slack.engineering/evolving-api-pagination-at-slack/
 * https://github.com/blongden/vnd.error
-
-### Resource identifiers
-
-I've taken inspiration from Slack - identifiers returned to the consumer are base-36 encoded numbers. 64 bit integers
-are 64 bits shorter than UUIDs while still allowing us long enough data storage and write throughput. I can generate 29
-247 120 867 unique values per second assuming a 20-year-long retention.
-
-If we require more space, I would consider sharding the data (ie. per continent/country/specialization) instead of
-putting everything into one place.
-
-URLs like `/slots/SFV506GS7` are a lot nicer than `/slots/1fcde0e9-13ee-4c0e-9c58-3ed90107d108`.
 
 ### The `date_to` filter
 

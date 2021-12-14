@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\ValueObject;
 
-use App\Entity\Slot;
+use App\Domain\Model\Slot;
 
 final class SlotsCollection
 {

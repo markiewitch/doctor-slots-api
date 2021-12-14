@@ -1,0 +1,2 @@
+parameters:
+  slots_provider_api_url: http://mountebank:10001

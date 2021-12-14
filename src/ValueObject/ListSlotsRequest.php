@@ -2,19 +2,23 @@
 declare(strict_types=1);
 
 namespace App\ValueObject;
-use DateTime;
 
 final class ListSlotsRequest
 {
     private string $sortType;
-    private DateTime $dateFrom;
-    private DateTime $dateTo;
+    private ?\DateTimeImmutable $dateFrom;
+    private ?\DateTimeImmutable $dateTo;
+    private int $limit;
+    private ?string $cursor;
 
-    public function __construct(string $sortType, DateTime $dateFrom, DateTime $dateTo)
+    public function __construct(string $sortType, ?\DateTimeImmutable $dateFrom = null, ?\DateTimeImmutable $dateTo = null, int $limit = 15, ?string $cursor = null)
     {
         $this->sortType = $sortType;
         $this->dateFrom = $dateFrom;
         $this->dateTo = $dateTo;
+        $this->limit = min(50, $limit);
+        //todo decrypt cursor and deserialize ulids
+        $this->cursor = $cursor;
     }
 
     public function getSortType(): string
@@ -22,13 +26,23 @@ final class ListSlotsRequest
         return $this->sortType;
     }
 
-    public function getDateFrom(): DateTime
+    public function getDateFrom(): ?\DateTimeImmutable
     {
         return $this->dateFrom;
     }
 
-    public function getDateTo(): DateTime
+    public function getDateTo(): ?\DateTimeImmutable
     {
         return $this->dateTo;
+    }
+
+    public function getLimit(): mixed
+    {
+        return $this->limit;
+    }
+
+    public function getCursor(): ?string
+    {
+        return $this->cursor;
     }
 }
